@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Página no encontrada (404){% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4 p-5">
+                <h1 class="display-1 text-warning fw-bold">404</h1>
+                <h2 class="mb-4">Página no encontrada</h2>
+                <p class="lead text-muted mb-4">
+                    Lo sentimos, la página que estás buscando no existe o ha sido movida.
+                </p>
+                <a href="{% url 'home' %}" class="btn btn-primary btn-lg px-5">
+                    Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

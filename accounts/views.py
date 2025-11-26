@@ -20,7 +20,7 @@ def signup_view(request):
             send_mail(
                 'Welcome to Our Site',
                 f'Hi {user.username}, thanks for registering!',
-                'admin@example.com',
+                settings.DEFAULT_FROM_EMAIL,
                 [user.email],
                 fail_silently=False,
             )

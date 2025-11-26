@@ -5,6 +5,7 @@ from .forms import SearchForm
 import requests
 from bs4 import BeautifulSoup
 import urllib.parse
+from django.conf import settings
 
 @login_required
 def scraper_home(request):
@@ -120,7 +121,7 @@ def send_scraper_email(user_email, keyword, resultados):
         email = EmailMessage(
             subject=f"Resultados de Scraping: {keyword}",
             body=body,
-            from_email='noreply@parcial2.com',
+            from_email=settings.DEFAULT_FROM_EMAIL,
             to=[user_email],
         )
         email.send(fail_silently=False)
