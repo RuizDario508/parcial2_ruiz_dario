@@ -7,7 +7,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ⛔ Seguridad
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1', 'https://parcial2-ruiz-dario.onrender.com').split(',')
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS',
+    'localhost,127.0.0.1,parcial2-ruiz-dario.onrender.com'
+).split(',')
+CSRF_TRUSTED_ORIGINS = [
+    "https://parcial2-ruiz-dario.onrender.com"
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -115,8 +121,9 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = os.environ.get('ruizdario181@gmail.com')
-EMAIL_HOST_PASSWORD = os.environ.get('huve fknl bzir wale')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
