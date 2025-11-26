@@ -7,12 +7,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ⛔ Seguridad
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.environ.get(
-    'ALLOWED_HOSTS',
-    'localhost,127.0.0.1,parcial2-ruiz-dario.onrender.com'
-).split(',')
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "parcial2-ruiz-dario.onrender.com",
+]
+
 CSRF_TRUSTED_ORIGINS = [
-    "https://parcial2-ruiz-dario.onrender.com"
+    "https://parcial2-ruiz-dario.onrender.com",
+    "https://*.onrender.com",
 ]
 
 INSTALLED_APPS = [
