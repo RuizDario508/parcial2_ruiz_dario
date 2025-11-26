@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>👨‍🎓 Mis Alumnos</h2>
+
+    <a href="{% url 'crear_alumno' %}" class="btn btn-primary my-3">➕ Crear Alumno</a>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Curso</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for alumno in alumnos %}
+        <tr>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.edad }}</td>
+            <td>{{ alumno.curso }}</td>
+            <td>
+                <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-sm btn-warning">✏ Editar</a>
+                <a href="{% url 'borrar_alumno' alumno.id %}" class="btn btn-sm btn-danger"
+                   onclick="return confirm('¿Seguro que quieres borrar este alumno?')">🗑 Borrar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Aún no registraste alumnos.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

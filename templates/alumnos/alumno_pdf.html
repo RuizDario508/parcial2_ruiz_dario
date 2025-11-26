@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ficha del Alumno</title>
+</head>
+<body>
+    <h2>Ficha del alumno: {{ alumno.nombre }}</h2>
+    <p><strong>Edad:</strong> {{ alumno.edad }}</p>
+    <p><strong>Curso:</strong> {{ alumno.curso }}</p>
+    <p><strong>Fecha de creación:</strong> {{ alumno.created_at|date:"d/m/Y" }}</p>
+</body>
+</html>

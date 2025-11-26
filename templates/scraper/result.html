@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultado del Scraper{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+        <h2 class="mb-4 text-center">
+            🔍 Resultados del Scraping: <strong>{{ keyword }}</strong>
+        </h2>
+
+        {% if email_enviado %}
+        <div class="alert alert-success" role="alert">
+            ✅ Los resultados han sido enviados a tu correo electrónico
+        </div>
+        {% endif %}
+
+        {% if resultados %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Título</th>
+                        <th>Contenido</th>
+                        <th>Fuente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for resultado in resultados %}
+                    <tr>
+                        <td>{{ resultado.numero }}</td>
+                        <td><strong>{{ resultado.titulo }}</strong></td>
+                        <td>{{ resultado.contenido }}</td>
+                        <td>
+                            <a href="{{ resultado.fuente }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                Ver fuente
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            ⚠️ No se encontraron resultados para "{{ keyword }}"
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{% url 'scraper_home' %}" class="btn btn-secondary">
+                ← Nueva Búsqueda
+            </a>
+            <a href="{% url 'home' %}" class="btn btn-outline-dark">
+                Volver al Inicio
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3>⚠️ Confirmar Eliminación</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">¿Estás seguro que deseas eliminar el alumno:</p>
+                    <h4 class="text-center my-4">
+                        <strong>{{ alumno.nombre }}</strong>
+                    </h4>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Advertencia:</strong> Esta acción no se puede deshacer.
+                    </div>
+
+                    <form method="POST" class="mt-4">
+                        {% csrf_token %}
+                        <div class="d-flex gap-2 justify-content-center">
+                            <button type="submit" class="btn btn-danger">🗑️ Sí, eliminar</button>
+                            <a href="{% url 'alumno_detail' alumno.id %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

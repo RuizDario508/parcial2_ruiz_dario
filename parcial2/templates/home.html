@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Parcial 2!</h1>
+    <p class="lead">This is a simple Django application with Login and Registration.</p>
+    <hr class="my-4">
+    {% if user.is_authenticated %}
+    <p>You are logged in as <strong>{{ user.username }}</strong>.</p>
+    {% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">sign up</a> to continue.</p>
+    {% endif %}
+</div>
+{% endblock %}

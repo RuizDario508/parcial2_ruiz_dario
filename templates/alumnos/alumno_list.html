@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Mis alumnos</h2>
+        <a href="{% url 'alumno_create' %}" class="btn btn-success">+ Agregar Alumno</a>
+    </div>
+
+    <ul class="list-group">
+        {% for alumno in alumnos %}
+        <li class="list-group-item d-flex justify-content-between">
+            {{ alumno.nombre }}
+            <a href="{% url 'alumno_detail' alumno.id %}" class="btn btn-primary btn-sm">
+                Ver
+            </a>
+        </li>
+        {% empty %}
+        <p>No hay alumnos todavía.</p>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

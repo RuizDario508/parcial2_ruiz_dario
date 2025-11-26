@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="card p-4 shadow-sm">
+
+        <h2 class="text-center mb-3">{{ alumno.nombre }}</h2>
+
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><strong>Edad:</strong> {{ alumno.edad }}</li>
+            <li class="list-group-item"><strong>Curso:</strong> {{ alumno.curso }}</li>
+            <li class="list-group-item"><strong>Creado:</strong> {{ alumno.created_at }}</li>
+        </ul>
+
+        <div class="d-flex gap-2">
+            <a href="{% url 'alumno_update' alumno.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'alumno_delete' alumno.id %}" class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'alumno_pdf' alumno.id %}" class="btn btn-warning">Enviar PDF</a>
+            <a href="{% url 'alumno_list' %}" class="btn btn-secondary ms-auto">Volver</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+

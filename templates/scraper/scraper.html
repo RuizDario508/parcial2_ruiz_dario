@@ -1,0 +1,16 @@
+<h2>Scraper básico</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="palabra" placeholder="Ingresar palabra clave">
+    <button type="submit">Buscar</button>
+</form>
+
+<h3>Resultados:</h3>
+<ul>
+    {% for r in resultados %}
+        <li>{{ r.titulo }} — {{ r.descripcion }}</li>
+    {% empty %}
+        <li>No hay resultados</li>
+    {% endfor %}
+</ul>

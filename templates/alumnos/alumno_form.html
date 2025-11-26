@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3>{{ form.instance.pk|yesno:"Editar Alumno,Crear Nuevo Alumno" }}</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="id_nombre" class="form-label">Nombre Completo</label>
+                            {{ form.nombre }}
+                            {% if form.nombre.errors %}
+                            <div class="text-danger">{{ form.nombre.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_edad" class="form-label">Edad</label>
+                            {{ form.edad }}
+                            {% if form.edad.errors %}
+                            <div class="text-danger">{{ form.edad.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_curso" class="form-label">Curso</label>
+                            {{ form.curso }}
+                            {% if form.curso.errors %}
+                            <div class="text-danger">{{ form.curso.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-success">💾 Guardar</button>
+                            <a href="{% url 'alumno_list' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

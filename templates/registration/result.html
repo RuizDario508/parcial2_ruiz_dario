@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultado Scraper{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h3>{{ mensaje }}</h3>
+    <a href="{% url 'scraper_home' %}" class="btn btn-secondary mt-3">Volver</a>
+</div>
+{% endblock %}
