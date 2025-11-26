@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -68,7 +69,6 @@ def alumno_delete(request, pk):
 from reportlab.pdfgen import canvas
 from django.http import FileResponse
 import io
-from django.core.mail import EmailMessage
 
 
 @login_required
@@ -97,7 +97,7 @@ def alumno_pdf(request, pk):
     email = EmailMessage(
         subject=f"Ficha del alumno {alumno.nombre}",
         body="Adjunto encontrarás el PDF con los datos del alumno.",
-        from_email="tu_correo@gmail.com",
+        from_email=settings.DEFAULT_FROM_EMAIL,
         to=[request.user.email],
     )
     email.attach(f"{alumno.nombre}.pdf", pdf_content, "application/pdf")
